@@ -1,0 +1,73 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Modifier item de navigation{% endblock %}
+
+{% block admin_content %}
+    <h1>Modifier item de navigation</h1>
+
+    <form method="post">
+        <label>
+            Label *
+            <input type="text" name="label" value="{{ item.label }}" required>
+        </label>
+
+        <label>
+            Type *
+            <select name="type" id="type-select" required>
+                <option value="internal" {% if item.type == 'internal' %}selected{% endif %}>Internal</option>
+                <option value="external" {% if item.type == 'external' %}selected{% endif %}>External</option>
+                <option value="dropdown_only" {% if item.type == 'dropdown_only' %}selected{% endif %}>Dropdown only</option>
+            </select>
+        </label>
+
+        <label id="url-label" style="display: {% if item.type != 'dropdown_only' %}block{% else %}none{% endif %};">
+            URL *
+            <input type="text" name="url" value="{{ item.url }}" placeholder="/about, /products, https://example.com">
+        </label>
+
+        <label>
+            Parent
+            <select name="parent">
+                <option value="">Aucun (racine)</option>
+                {% for parentItem in allItems %}
+                    {% if parentItem.id != item.id %}
+                        <option value="{{ parentItem.id }}" {% if item.parent and item.parent.id == parentItem.id %}selected{% endif %}>
+                            {{ parentItem.label }}
+                        </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>
+            Position
+            <input type="number" name="position" value="{{ item.position }}" min="0">
+        </label>
+
+        <label>
+            <input type="checkbox" name="isExternal" value="1" {% if item.isExternal %}checked{% endif %}>
+            Lien externe
+        </label>
+
+        <label>
+            <input type="checkbox" name="isVisible" value="1" {% if item.isVisible %}checked{% endif %}>
+            Visible
+        </label>
+
+        <button type="submit">Enregistrer</button>
+        <a href="{{ path('admin_navigation_index') }}" class="btn">Annuler</a>
+    </form>
+
+    <script>
+        document.getElementById('type-select').addEventListener('change', function() {
+            const type = this.value;
+            const urlLabel = document.getElementById('url-label');
+            
+            if (type === 'dropdown_only') {
+                urlLabel.style.display = 'none';
+            } else {
+                urlLabel.style.display = 'block';
+            }
+        });
+    </script>
+{% endblock %}

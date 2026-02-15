@@ -1,0 +1,64 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Navigation{% endblock %}
+
+{% block admin_content %}
+    <h1>Navigation</h1>
+    <a href="{{ path('admin_navigation_new') }}" class="btn btn-primary">Nouvel item</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Label</th>
+                <th>Type</th>
+                <th>URL</th>
+                <th>Parent</th>
+                <th>Position</th>
+                <th>Visible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.label }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>
+                        {% if item.type != 'dropdown_only' %}
+                            {{ item.url ?: '-' }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ item.parent ? item.parent.label : '-' }}</td>
+                    <td>{{ item.position }}</td>
+                    <td>
+                        {% if item.isVisible %}
+                            <span style="color: green;">✓</span>
+                        {% else %}
+                            <span style="color: red;">✗</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_navigation_edit', {id: item.id}) }}">Modifier</a> |
+                        <form method="post" action="{{ path('admin_navigation_toggle_visibility', {id: item.id}) }}" style="display: inline;">
+                            <button type="submit" style="background: none; border: none; color: #007bff; cursor: pointer; text-decoration: underline;">
+                                {{ item.isVisible ? 'Masquer' : 'Afficher' }}
+                            </button>
+                        </form> |
+                        <form method="post" action="{{ path('admin_navigation_delete', {id: item.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer cet item ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                            <button type="submit" style="background: none; border: none; color: red; cursor: pointer; text-decoration: underline;">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8" style="padding: 20px; text-align: center;">Aucun item de navigation</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

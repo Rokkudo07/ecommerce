@@ -35,4 +35,14 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+
+    #[Route('/account', name: 'account')]
+    public function account(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        return $this->render('account/index.html.twig', [
+            'user' => $this->getUser(),
+        ]);
+    }
 }

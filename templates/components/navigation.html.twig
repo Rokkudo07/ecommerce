@@ -1,0 +1,35 @@
+{% macro render_item(item) %}
+    {% set hasChildren = item.children|length > 0 %}
+    
+    <li class="nav-item{% if hasChildren %} has-dropdown{% endif %}">
+        {% if item.type == 'dropdown_only' or hasChildren %}
+            <span class="nav-label">{{ item.label }}</span>
+        {% else %}
+            <a href="{{ item.url ?: '#' }}" 
+               class="nav-link{% if item.isExternal %} external{% endif %}"
+               {% if item.isExternal %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                {{ item.label }}
+            </a>
+        {% endif %}
+        
+        {% if hasChildren %}
+            <ul class="nav-dropdown">
+                {% for child in item.children %}
+                    {% if child.isVisible %}
+                        {{ _self.render_item(child) }}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}
+
+{% if items is defined and items|length > 0 %}
+    <ul class="navigation">
+        {% for item in items %}
+            {% if item.isVisible %}
+                {{ _self.render_item(item) }}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

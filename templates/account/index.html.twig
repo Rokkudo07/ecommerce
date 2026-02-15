@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block content %}
+    <div class="account-page">
+        <h1>Mon compte</h1>
+        
+        <div class="account-info">
+            <h2>Informations</h2>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Rôles:</strong> {{ user.roles|join(', ') }}</p>
+            <p><strong>Membre depuis:</strong> {{ user.createdAt|date('d/m/Y') }}</p>
+        </div>
+    </div>
+{% endblock %}

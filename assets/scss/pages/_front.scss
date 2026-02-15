@@ -1,27 +1,34 @@
 // Front pages styles
 main {
-    max-width: 1200px;
+    max-width: $container-width;
     margin: 0 auto;
-    padding: 2rem 20px;
+    padding: $space-md $space-sm;
+    width: 100%;
 }
 
 article {
     h1 {
-        margin-bottom: 1.5rem;
+        margin-bottom: $space-md;
     }
 }
 
 .block {
-    margin-bottom: 2rem;
+    margin-bottom: $space-md;
     
     &.block-hero {
-        padding: 60px 20px;
+        padding: $space-xl $space-sm;
         text-align: center;
+        background-color: $color-bg-light;
     }
     
     &.block-text {
         h2 {
-            margin-bottom: 1rem;
+            margin-bottom: $space-sm;
+            color: $color-text-primary;
+        }
+        
+        p {
+            color: $color-text-primary;
         }
     }
     
@@ -29,6 +36,40 @@ article {
         img {
             max-width: 100%;
             height: auto;
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: $bp-tablet) {
+    main {
+        padding: $space-md $space-sm;
+    }
+
+    .block {
+        &.block-hero {
+            padding: $space-lg $space-sm;
+        }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    main {
+        padding: $space-sm;
+    }
+
+    article {
+        h1 {
+            font-size: $text-xl;
+            margin-bottom: $space-sm;
+        }
+    }
+
+    .block {
+        margin-bottom: $space-sm;
+        
+        &.block-hero {
+            padding: $space-md $space-sm;
         }
     }
 }

@@ -1,17 +1,84 @@
-// Typography
+@import '../base/variables';
+
+// Typography base
+
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1rem;
-    font-weight: 600;
-    line-height: 1.2;
+    margin-bottom: $space-sm;
+    font-family: $font-primary;
+    line-height: 1.1;
+    color: $color-text-primary;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+// Headings scale
+
+h1 {
+    font-size: $text-xxl;
+    font-weight: 500;
+    margin-bottom: $space-md;
+}
+
+h2 {
+    font-size: $text-xl;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: $text-lg;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: $text-md;
+}
+
+h5 {
+    font-size: $text-sm;
+}
+
+h6 {
+    font-size: $text-xs;
+}
+
+// Paragraphs
 
 p {
-    margin-bottom: 1rem;
+    margin-bottom: $space-md;
+    line-height: 1.6;
+    color: $color-text-primary;
+    max-width: $text-max-width;
+}
+
+// Responsive typography
+@media (max-width: $bp-tablet) {
+    h1 {
+        font-size: $text-xl;
+    }
+
+    h2 {
+        font-size: $text-lg;
+    }
+
+    h3 {
+        font-size: $text-md;
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    h1 {
+        font-size: $text-lg;
+        margin-bottom: $space-sm;
+    }
+
+    h2 {
+        font-size: $text-md;
+    }
+
+    h3 {
+        font-size: $text-sm;
+    }
+
+    p {
+        font-size: $text-sm;
+        margin-bottom: $space-sm;
+    }
 }

@@ -1,22 +1,40 @@
 // Reset & Base styles
-* {
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: $font-primary;
     line-height: 1.6;
-    color: $text-color;
-    background-color: $bg-color;
+    color: $color-text-primary;
+    background-color: $color-white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-    color: $primary-color;
+    color: inherit;
     text-decoration: none;
-    
+    transition: opacity 0.2s ease;
+
     &:hover {
-        text-decoration: underline;
+        opacity: 0.6;
     }
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }

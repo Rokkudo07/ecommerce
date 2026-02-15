@@ -2,14 +2,16 @@
 .admin-layout {
     display: flex;
     min-height: 100vh;
+    background-color: $color-white;
     
     aside {
         width: 250px;
-        background: #f5f5f5;
-        padding: 20px;
+        background: $color-bg-light;
+        padding: $space-sm;
         
         h2 {
-            margin-bottom: 20px;
+            margin-bottom: $space-sm;
+            color: $color-text-primary;
         }
         
         nav ul {
@@ -17,14 +19,21 @@
             padding: 0;
             
             li {
-                margin: 10px 0;
+                margin: $space-xs 0;
+                
+                a {
+                    color: $color-text-primary;
+                    display: block;
+                    padding: $space-xs 0;
+                }
             }
         }
     }
     
     main {
         flex: 1;
-        padding: 20px;
+        padding: $space-sm;
+        background-color: $color-white;
     }
 }
 
@@ -33,25 +42,31 @@ table {
     border-collapse: collapse;
     
     th, td {
-        padding: 10px;
+        padding: $space-xs;
         text-align: left;
-        border: 1px solid $border-color;
+        border: 1px solid $color-border-soft;
     }
     
     th {
-        background: #f5f5f5;
+        background: $color-bg-light;
         font-weight: 600;
+        color: $color-text-primary;
+    }
+    
+    td {
+        color: $color-text-primary;
     }
 }
 
 form {
     max-width: 600px;
-    margin-top: 20px;
+    margin-top: $space-sm;
     
     label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: $space-xs;
         font-weight: 500;
+        color: $color-text-primary;
     }
     
     input[type="text"],
@@ -61,45 +76,119 @@ form {
     select,
     textarea {
         width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid $border-color;
+        padding: $space-xs;
+        margin-bottom: $space-sm;
+        border: 1px solid $color-border-soft;
         border-radius: 4px;
+        color: $color-text-primary;
+        background-color: $color-white;
     }
     
     button {
-        padding: 10px 20px;
+        padding: $space-xs $space-sm;
         background: $primary-color;
-        color: white;
+        color: $color-white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         
         &:hover {
-            background: darken($primary-color, 10%);
+            opacity: 0.9;
         }
     }
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: $space-xs $space-sm;
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
     
     &.btn-primary {
         background: $primary-color;
-        color: white;
+        color: $color-white;
     }
     
     &.btn-success {
         background: $success-color;
-        color: white;
+        color: $color-white;
     }
     
     &.btn-danger {
         background: $danger-color;
-        color: white;
+        color: $color-white;
+    }
+}
+
+// Responsive styles
+@media (max-width: $bp-tablet) {
+    .admin-layout {
+        flex-direction: column;
+        
+        aside {
+            width: 100%;
+            padding: $space-sm;
+        }
+        
+        main {
+            padding: $space-sm;
+        }
+    }
+
+    table {
+        font-size: $text-sm;
+        
+        th, td {
+            padding: $space-xs;
+        }
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .admin-layout {
+        aside {
+            padding: $space-xs;
+            
+            h2 {
+                font-size: $text-lg;
+            }
+        }
+        
+        main {
+            padding: $space-xs;
+        }
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: $text-xs;
+        
+        th, td {
+            padding: 4px;
+            white-space: nowrap;
+        }
+    }
+
+    form {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        select,
+        textarea {
+            font-size: $text-sm;
+        }
+    }
+
+    .btn {
+        padding: $space-xs;
+        font-size: $text-sm;
     }
 }

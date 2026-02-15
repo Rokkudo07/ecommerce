@@ -1,9 +1,297 @@
 // Footer styles
-footer {
-    background-color: #f8f9fa;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid $border-color;
+.site-footer {
+    background-color: $color-bg-light;
+    padding: $space-xl 0 $space-lg;
+    margin-top: $space-xxl;
+    border-top: 1px solid $color-border-soft;
+    color: $color-text-primary;
+}
+
+.footer-container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $space-md;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $space-lg;
+    align-items: start;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+// Logo section
+.footer-logo {
+    .footer-logo-img {
+        width: auto;
+        height: auto;
+        margin-bottom: $space-sm;
+    }
+
+    .footer-url {
+        margin-top: auto;
+        
+        a {
+            display: inline-block;
+            padding: $space-xs $space-sm;
+            background-color: rgba($color-accent, 0.2);
+            color: $color-text-primary;
+            font-size: $text-xs;
+            text-decoration: none;
+            border-radius: 4px;
+            word-break: break-all;
+            
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+// Community section
+.footer-community {
     text-align: center;
-    color: #6c757d;
+
+    .footer-heading {
+        font-size: $text-lg;
+        font-weight: 500;
+        color: $color-text-primary;
+        margin-bottom: $space-sm;
+        font-family: serif;
+    }
+
+    .footer-subtext {
+        font-size: $text-sm;
+        color: $color-text-primary;
+        margin-bottom: $space-md;
+        max-width: none;
+    }
+
+    .footer-newsletter {
+        display: flex;
+        gap: $space-xs;
+        margin-bottom: $space-sm;
+        justify-content: center;
+    }
+
+    .footer-email-input {
+        flex: 1;
+        max-width: 300px;
+        padding: $space-xs $space-sm;
+        border: 1px solid $color-border-soft;
+        border-radius: 4px;
+        background-color: $color-white;
+        color: $color-text-primary;
+        font-size: $text-sm;
+
+        &::placeholder {
+            color: rgba($color-text-primary, 0.5);
+        }
+    }
+
+    .footer-signup-btn {
+        padding: $space-xs $space-md;
+        background-color: $color-text-primary;
+        color: $color-bg-light;
+        border: none;
+        border-radius: 4px;
+        font-size: $text-sm;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    .footer-privacy {
+        font-size: $text-xs;
+        color: $color-text-primary;
+        margin-bottom: 0;
+        max-width: none;
+    }
+}
+
+// Connect section
+.footer-connect {
+    text-align: right;
+
+    .footer-heading {
+        font-size: $text-lg;
+        font-weight: 500;
+        color: $color-text-primary;
+        margin-bottom: $space-sm;
+        font-family: serif;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: $space-sm;
+        justify-content: flex-end;
+        margin-bottom: $space-md;
+    }
+
+    .social-icon {
+        color: $color-text-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .footer-search {
+        display: flex;
+        gap: $space-xs;
+        margin-bottom: $space-md;
+        justify-content: flex-end;
+    }
+
+    .footer-search-input {
+        padding: $space-xs $space-sm;
+        border: 1px solid $color-border-soft;
+        border-radius: 4px;
+        background-color: $color-white;
+        color: $color-text-primary;
+        font-size: $text-sm;
+        width: 200px;
+
+        &::placeholder {
+            color: rgba($color-text-primary, 0.5);
+        }
+    }
+
+    .footer-search-btn {
+        padding: $space-xs;
+        background-color: transparent;
+        border: 1px solid $color-border-soft;
+        border-radius: 4px;
+        color: $color-text-primary;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xs;
+        align-items: flex-end;
+    }
+
+    .footer-link {
+        color: $color-text-primary;
+        text-decoration: underline;
+        font-size: $text-sm;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: $bp-tablet) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: $space-md;
+    }
+
+    .footer-connect {
+        grid-column: 1 / -1;
+        text-align: center;
+
+        .footer-social {
+            justify-content: center;
+        }
+
+        .footer-search {
+            justify-content: center;
+        }
+
+        .footer-links {
+            align-items: center;
+        }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .site-footer {
+        padding: $space-lg 0 $space-md;
+        margin-top: $space-lg;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: $space-lg;
+        padding: 0 $space-sm;
+    }
+
+    .footer-logo {
+        text-align: center;
+
+        .footer-logo-img {
+            margin: 0 auto $space-sm;
+        }
+
+        .footer-url {
+            text-align: center;
+        }
+    }
+
+    .footer-community {
+        .footer-newsletter {
+            flex-direction: column;
+        }
+
+        .footer-email-input {
+            max-width: 100%;
+        }
+
+        .footer-signup-btn {
+            width: 100%;
+        }
+    }
+
+    .footer-connect {
+        text-align: center;
+
+        .footer-search {
+            flex-direction: column;
+        }
+
+        .footer-search-input {
+            width: 100%;
+        }
+
+        .footer-search-btn {
+            width: 100%;
+        }
+    }
 }

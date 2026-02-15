@@ -1,13 +1,48 @@
-// Variables
-$primary-color: #007bff;
-$secondary-color: #6c757d;
+// 🎨 Brand palette
+$color-accent: #b9a590;
+$color-accent-strong: #574c3f;
+
+$color-bg-light: rgb(236, 228, 218);
+$color-bg-medium: rgb(185, 165, 144);
+$color-bg-dark: rgb(87, 76, 63);
+
+$color-text-primary: rgb(54, 48, 42);
+$color-text-secondary: rgb(185, 165, 144);
+
+// ⚪ Neutrals
+$color-white: #fff;
+$color-border-subtle: rgba(0, 0, 0, 0.08);
+$color-border-soft: rgba(0, 0, 0, 0.12);
+
+// 🎨 UI Colors (pour compatibilité admin)
+$primary-color: $color-accent-strong;
 $success-color: #28a745;
 $danger-color: #dc3545;
-$text-color: #333;
-$bg-color: #fff;
-$border-color: #ddd;
+$border-color: $color-border-soft;
 
-// Breakpoints
-$mobile: 768px;
-$tablet: 1024px;
-$desktop: 1200px;
+// 🔤 Typography
+$font-primary: 'Inter', sans-serif;
+
+$text-xs: 12px;
+$text-sm: 14px;
+$text-md: 16px;
+$text-lg: 20px;
+$text-xl: 32px;
+$text-xxl: 48px;
+
+// 📏 Spacing
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 32px;
+$space-lg: 64px;
+$space-xl: 96px;
+$space-xxl: 140px;
+
+// 🧱 Layout
+$container-width: 1200px;
+$text-max-width: 720px;
+
+// 📱 Breakpoints
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop: 1200px;

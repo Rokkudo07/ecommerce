@@ -1,0 +1,22 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Modifier le media{% endblock %}
+
+{% block admin_content %}
+    <h1>Modifier le media</h1>
+    <a href="{{ path('admin_media_index') }}">← Retour</a>
+
+    <form method="post" style="max-width: 600px; margin-top: 20px;">
+        <div style="margin: 15px 0;">
+            <label for="path">Path *</label>
+            <input type="text" id="path" name="path" value="{{ media.path }}" required style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="alt">Alt</label>
+            <input type="text" id="alt" name="alt" value="{{ media.alt }}" style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <button type="submit" style="padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer;">Enregistrer</button>
+    </form>
+{% endblock %}

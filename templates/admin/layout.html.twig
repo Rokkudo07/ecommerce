@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {% block admin_title %}Dashboard{% endblock %}{% endblock %}
+
+{% block body %}
+    <div style="display: flex; min-height: 100vh;">
+        <aside style="width: 250px; background: #f5f5f5; padding: 20px;">
+            <h2>Admin</h2>
+            <nav>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 10px 0;"><a href="{{ path('admin_page_index') }}">Pages</a></li>
+                    <li style="margin: 10px 0;"><a href="{{ path('admin_media_index') }}">Media</a></li>
+                    <li style="margin: 10px 0;"><a href="{{ path('logout') }}">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main style="flex: 1; padding: 20px;">
+            {% block admin_content %}{% endblock %}
+        </main>
+    </div>
+{% endblock %}

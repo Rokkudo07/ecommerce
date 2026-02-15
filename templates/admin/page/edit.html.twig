@@ -1,0 +1,53 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Modifier la page{% endblock %}
+
+{% block admin_content %}
+    <h1>Modifier la page</h1>
+    <a href="{{ path('admin_page_index') }}">← Retour</a>
+
+    <form method="post" style="max-width: 600px; margin-top: 20px;">
+        <div style="margin: 15px 0;">
+            <label for="title">Titre *</label>
+            <input type="text" id="title" name="title" value="{{ page.title }}" required style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="slug">Slug *</label>
+            <input type="text" id="slug" name="slug" value="{{ page.slug }}" required style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="locale">Locale</label>
+            <select id="locale" name="locale" style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="fr" {{ page.locale == 'fr' ? 'selected' : '' }}>Français</option>
+                <option value="en" {{ page.locale == 'en' ? 'selected' : '' }}>English</option>
+            </select>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="template">Template</label>
+            <input type="text" id="template" name="template" value="{{ page.template }}" style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="seoTitle">SEO Title</label>
+            <input type="text" id="seoTitle" name="seoTitle" value="{{ page.seoTitle }}" style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="seoDescription">SEO Description</label>
+            <textarea id="seoDescription" name="seoDescription" rows="3" style="width: 100%; padding: 8px; margin-top: 5px;">{{ page.seoDescription }}</textarea>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="status">Status</label>
+            <select id="status" name="status" style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="draft" {{ page.status == 'draft' ? 'selected' : '' }}>Draft</option>
+                <option value="published" {{ page.status == 'published' ? 'selected' : '' }}>Published</option>
+            </select>
+        </div>
+
+        <button type="submit" style="padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer;">Enregistrer</button>
+    </form>
+{% endblock %}

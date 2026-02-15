@@ -1,0 +1,44 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Blocs - {{ page.title }}{% endblock %}
+
+{% block admin_content %}
+    <h1>Blocs - {{ page.title }}</h1>
+    <a href="{{ path('admin_page_index') }}">← Retour aux pages</a> |
+    <a href="{{ path('admin_block_new', {pageId: page.id}) }}">Nouveau bloc</a>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background: #f5f5f5;">
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">ID</th>
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Type</th>
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Position</th>
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Payload</th>
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for block in blocks %}
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ block.id }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ block.type }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ block.position }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        <pre style="max-width: 300px; overflow: auto; font-size: 12px;">{{ block.payload|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+                    </td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        <a href="{{ path('admin_block_edit', {id: block.id}) }}">Modifier</a> |
+                        <form method="post" action="{{ path('admin_block_delete', {id: block.id}) }}" style="display: inline;" onsubmit="return confirm('Supprimer ce bloc ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ block.id) }}">
+                            <button type="submit" style="background: none; border: none; color: red; cursor: pointer; text-decoration: underline;">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" style="padding: 20px; text-align: center;">Aucun bloc</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

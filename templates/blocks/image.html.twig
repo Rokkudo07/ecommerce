@@ -1,0 +1,8 @@
+<div class="block block-image">
+    {% if block.payload.src is defined %}
+        <img src="{{ block.payload.src }}" alt="{{ block.payload.alt ?? '' }}" style="max-width: 100%;">
+    {% endif %}
+    {% if block.payload.caption is defined %}
+        <p style="font-style: italic; color: #666;">{{ block.payload.caption }}</p>
+    {% endif %}
+</div>

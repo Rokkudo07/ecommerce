@@ -1,0 +1,8 @@
+// Main SCSS file
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/typography';
+@import 'components/header';
+@import 'components/footer';
+@import 'pages/admin';
+@import 'pages/front';

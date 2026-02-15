@@ -1,0 +1,53 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}Nouvelle page{% endblock %}
+
+{% block admin_content %}
+    <h1>Nouvelle page</h1>
+    <a href="{{ path('admin_page_index') }}">← Retour</a>
+
+    <form method="post" style="max-width: 600px; margin-top: 20px;">
+        <div style="margin: 15px 0;">
+            <label for="title">Titre *</label>
+            <input type="text" id="title" name="title" required style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="slug">Slug *</label>
+            <input type="text" id="slug" name="slug" required style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="locale">Locale</label>
+            <select id="locale" name="locale" style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="template">Template</label>
+            <input type="text" id="template" name="template" value="default" style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="seoTitle">SEO Title</label>
+            <input type="text" id="seoTitle" name="seoTitle" style="width: 100%; padding: 8px; margin-top: 5px;">
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="seoDescription">SEO Description</label>
+            <textarea id="seoDescription" name="seoDescription" rows="3" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label for="status">Status</label>
+            <select id="status" name="status" style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+            </select>
+        </div>
+
+        <button type="submit" style="padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer;">Créer</button>
+    </form>
+{% endblock %}

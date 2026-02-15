@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+/vendor
+/node_modules
+/var
+/public/bundles
+/.phpunit.result.cache
+/.phpunit.cache
+/docker
+*.md
+.DS_Store

@@ -1,0 +1,8 @@
+<div class="block block-text">
+    {% if block.payload.title is defined %}
+        <h2>{{ block.payload.title }}</h2>
+    {% endif %}
+    {% if block.payload.content is defined %}
+        <div>{{ block.payload.content|raw }}</div>
+    {% endif %}
+</div>

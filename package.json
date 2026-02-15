@@ -1,0 +1,13 @@
+{
+  "name": "marketing-cms",
+  "version": "1.0.0",
+  "description": "Marketing CMS assets",
+  "scripts": {
+    "sass": "sass assets/scss/main.scss public/css/main.css",
+    "sass:watch": "sass --watch assets/scss/main.scss:public/css/main.css",
+    "sass:prod": "sass --style=compressed assets/scss/main.scss public/css/main.css"
+  },
+  "devDependencies": {
+    "sass": "^1.77.6"
+  }
+}

@@ -1,0 +1,26 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block admin_title %}{{ page.title }}{% endblock %}
+
+{% block admin_content %}
+    <h1>{{ page.title }}</h1>
+    <a href="{{ path('admin_page_index') }}">← Retour</a> |
+    <a href="{{ path('admin_page_edit', {id: page.id}) }}">Modifier</a>
+
+    <div style="margin-top: 20px;">
+        <p><strong>Slug:</strong> {{ page.slug }}</p>
+        <p><strong>Locale:</strong> {{ page.locale }}</p>
+        <p><strong>Template:</strong> {{ page.template }}</p>
+        <p><strong>Status:</strong> {{ page.status }}</p>
+        <p><strong>SEO Title:</strong> {{ page.seoTitle ?? 'N/A' }}</p>
+        <p><strong>SEO Description:</strong> {{ page.seoDescription ?? 'N/A' }}</p>
+        <p><strong>Créé le:</strong> {{ page.createdAt|date('d/m/Y H:i') }}</p>
+        <p><strong>Modifié le:</strong> {{ page.updatedAt|date('d/m/Y H:i') }}</p>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h2>Blocs</h2>
+        <a href="{{ path('admin_block_new', {pageId: page.id}) }}">Ajouter un bloc</a>
+        <a href="{{ path('admin_block_index', {pageId: page.id}) }}" style="margin-left: 10px;">Gérer les blocs</a>
+    </div>
+{% endblock %}
